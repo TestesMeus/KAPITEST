@@ -10,5 +10,10 @@ class Footer extends Component {
 export default Footer;
 
 const styles = StyleSheet.create({
-  pezinho: { backgroundColor: "#2c2c2c", width: 100, height: 100 },
+  pezinho: {
+    backgroundColor: "#2c2c2c",
+    width: "100%",
+    height: 100,
+    marginTop: 30,
+  },
 });

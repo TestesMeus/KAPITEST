@@ -4,6 +4,9 @@ import ContainerImg from "./components/ContainerImg";
 import MostCaroussel from "./components/MostCaroussel";
 import Map from "./components/Map";
 import Footer from "./components/Footer";
+import Categories from "./components/Categories";
+import Routes from "./components/Routes";
+import Partiners from "./components/Partiners";
 
 class App extends Component{
   render(){
@@ -16,8 +19,11 @@ class App extends Component{
             proporcionar
           </Text>
           <MostCaroussel />
+          <Categories />
           <Map />
         </View>
+        <Routes />
+        <Partiners />
         <Footer />
       </ScrollView>
     )
@@ -30,7 +36,9 @@ export default App
 const styles= StyleSheet.create({
   container:{
     flex:1,
-    backgroundColor:'#2c2c2c'
+    backgroundColor:'#2c2c2c',
+    height:"auto",
+    width:"auto"
   },
   containerimg:{
     height:250,

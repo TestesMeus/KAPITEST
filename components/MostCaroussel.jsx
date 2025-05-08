@@ -13,7 +13,7 @@ class MostCaroussel extends Component {
     return (
       <View>
         <Text style={styles.texto}>Rotas mais realizadas:</Text>
-        <ScrollView horizontal={true}>
+        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
           <View style={styles.box1}></View>
           <View style={styles.box2}></View>
           <View style={styles.box3}></View>

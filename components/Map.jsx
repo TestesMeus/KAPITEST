@@ -42,10 +42,11 @@ const styles = StyleSheet.create({
   },
   informacoes: {
     backgroundColor: "white",
-
+    alignItems: "center",
     height: 400,
     width: 350,
     marginTop: 5,
+    padding: 5,
   },
   img: {
     backgroundColor: "yellow",
@@ -61,13 +62,14 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     height: "50%",
+    width: "80%",
   },
   btn: {
     backgroundColor: "blue",
     textAlign: "center",
     justifyContent: "space-around",
-    height: 50,
+    height: "8%",
     width: 70,
-    marginLeft: "70%",
+    margin: 5,
   },
 });
