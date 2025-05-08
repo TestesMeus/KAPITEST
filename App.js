@@ -2,6 +2,8 @@ import React, {Component} from "react";
 import { View,ScrollView,StyleSheet,Text } from 'react-native';
 import ContainerImg from "./components/ContainerImg";
 import MostCaroussel from "./components/MostCaroussel";
+import Map from "./components/Map";
+import Footer from "./components/Footer";
 
 class App extends Component{
   render(){
@@ -14,7 +16,9 @@ class App extends Component{
             proporcionar
           </Text>
           <MostCaroussel />
+          <Map />
         </View>
+        <Footer />
       </ScrollView>
     )
   }
