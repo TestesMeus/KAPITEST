@@ -1,13 +1,20 @@
 import React, {Component} from "react";
-import { View,ScrollView,Text,StyleSheet } from 'react-native';
+import { View,ScrollView,StyleSheet,Text } from 'react-native';
 import ContainerImg from "./components/ContainerImg";
+import MostCaroussel from "./components/MostCaroussel";
 
 class App extends Component{
   render(){
     return(
-      <ScrollView style={styles.container} >
-        <ContainerImg />
-
+      <ScrollView showsVerticalScrollIndicator ={ false  } style={styles.container} >
+        <ContainerImg style = {styles.containerimg}/>
+        <View style={styles.pad}>
+          <Text style={styles.slogan}>
+            Somos a Kapitour, e viemos lhe revelar o que Maricá pode te
+            proporcionar
+          </Text>
+          <MostCaroussel />
+        </View>
       </ScrollView>
     )
   }
@@ -20,6 +27,19 @@ const styles= StyleSheet.create({
   container:{
     flex:1,
     backgroundColor:'#2c2c2c'
-  }
+  },
+  containerimg:{
+    height:250,
+  },
+  pad:{
+    marginHorizontal: 15,
+  },
+  slogan: {
+    color: "#f0f0f0",
+    textAlign: "center",
+    fontSize: 16,
+    padding: 25,
+
+  },
 })
   
