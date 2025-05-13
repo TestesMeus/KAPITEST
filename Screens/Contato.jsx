@@ -109,6 +109,7 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: "#1a1a1d", // fundo escuro, igual login
     flexGrow: 1,
+    paddingBottom: 100,
   },
   title: {
     fontSize: 24,

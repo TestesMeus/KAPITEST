@@ -93,6 +93,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#1a1a1d",
     justifyContent: "center",
     alignItems: "center",
+    paddingBottom: 100,
   },
   formBox: {
     backgroundColor: "#333",

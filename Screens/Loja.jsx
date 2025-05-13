@@ -79,13 +79,23 @@ const Loja = () => {
 
   return (
     <ScrollView style={styles.container}>
-      <Image
-        source={{
-          uri: "https://github.com/Kapitour/Imgs-Padr-o/blob/main/KapiStorePainel.png?raw=true",
-        }}
-        style={styles.banner}
-      />
+      <View style={styles.wrapper}>
+        <Image
+          source={{
+            uri: "https://github.com/Kapitour/Imgs-Padr-o/blob/main/KapiStorePainel.png?raw=true",
+          }}
+          style={styles.banner}
+        />
 
+        <FlatList
+          data={products}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.id.toString()}
+          contentContainerStyle={styles.list}
+          numColumns={1}
+          scrollEnabled={false}
+        />
+      </View>
       <FlatList
         data={products}
         renderItem={renderItem}
@@ -154,7 +164,7 @@ const styles = StyleSheet.create({
   },
   banner: {
     width: "100%",
-    height: 200,
+    aspectRatio: 3, // largura 3x maior que altura
     resizeMode: "cover",
     borderRadius: 10,
     marginBottom: 20,
@@ -243,5 +253,10 @@ const styles = StyleSheet.create({
   },
   bold: {
     fontWeight: "bold",
+  },
+  wrapper: {
+    width: "100%",
+    maxWidth: 700,
+    alignSelf: "center",
   },
 });

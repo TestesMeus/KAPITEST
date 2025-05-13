@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -12,15 +12,19 @@ import { useNavigation } from "@react-navigation/native";
 
 const LoginScreen = () => {
   const navigation = useNavigation();
+  const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
 
   const handleLogin = () => {
-    // 🔗 Aqui entra a comunicação com o back-end para autenticação
-    // Exemplo:
-    // fetch('/api/login', { method: 'POST', body: JSON.stringify({ email, senha }) })
+    if (!email || !senha) {
+      Alert.alert("Campos obrigatórios", "Preencha todos os campos.");
+      return;
+    }
 
+    // Aqui entra a comunicação com o back-end para autenticação
     Alert.alert(
       "Login em breve",
-      "Aqui será feita a autenticação com o back-end."
+      `Email: ${email}\nSenha: ${"*".repeat(senha.length)}`
     );
   };
 
@@ -32,19 +36,27 @@ const LoginScreen = () => {
           style={styles.input}
           placeholder="Digite seu email"
           placeholderTextColor="#ccc"
+          autoCapitalize="none"
+          keyboardType="email-address"
+          value={email}
+          onChangeText={setEmail}
         />
+
         <Text style={styles.label}>Senha:</Text>
         <TextInput
           style={styles.input}
           placeholder="Digite sua senha"
           placeholderTextColor="#ccc"
           secureTextEntry
+          value={senha}
+          onChangeText={setSenha}
         />
+
         <TouchableOpacity style={styles.button} onPress={handleLogin}>
           <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => navigation.navigate("Register")}>
+        <TouchableOpacity onPress={() => navigation.navigate("Cadastro")}>
           <Text style={styles.cadastroText}>Cadastrar-se</Text>
         </TouchableOpacity>
 
@@ -79,23 +91,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     paddingHorizontal: 20,
-  },
-  backButton: {
-    position: "absolute",
-    top: 40,
-    left: 20,
-    backgroundColor: "#c3073f",
-    borderRadius: 20,
-    width: 40,
-    height: 40,
-    justifyContent: "center",
-    alignItems: "center",
-    zIndex: 10,
-  },
-  backButtonText: {
-    color: "#fff",
-    fontSize: 20,
-    fontWeight: "bold",
+    paddingBottom: 100,
   },
   formBox: {
     backgroundColor: "#333",
