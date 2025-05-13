@@ -1,57 +1,54 @@
-import React, {Component} from "react";
-import { View,ScrollView,StyleSheet,Text } from 'react-native';
-import ContainerImg from "./components/ContainerImg";
-import MostCaroussel from "./components/MostCaroussel";
-import Map from "./components/Map";
-import Footer from "./components/Footer";
-import Categories from "./components/Categories";
-import Routes from "./components/Routes";
-import Partiners from "./components/Partiners";
+import React, { useEffect,useRef, useState } from "react";
+import * as NavigationBar from "expo-navigation-bar";
+import { NavigationContainer } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { View, StyleSheet, Animated } from "react-native";
 
-class App extends Component{
-  render(){
-    return(
-      <ScrollView showsVerticalScrollIndicator ={ false  } style={styles.container} >
-        <ContainerImg style = {styles.containerimg}/>
-        <View style={styles.pad}>
-          <Text style={styles.slogan}>
-            Somos a Kapitour, e viemos lhe revelar o que Maricá pode te
-            proporcionar
-          </Text>
-          <MostCaroussel />
-          <Categories />
-          <Map />
-        </View>
-        <Routes />
-        <Partiners />
-        <Footer />
-      </ScrollView>
-    )
-  }
+// Páginas
+import Home from "./Screens/Home";
+import Login from "./Screens/Login";
+import Rotas from "./Screens/Rotas";
+import Loja from "./Screens/Loja";
+import Contato from "./Screens/Contato";
+import Cadastro from "./Screens/Cadastro";
+
+// Menu fixo
+import BottomMenu from "./elements/BottomMenu";
+
+const Tab = createBottomTabNavigator();
+
+export default function App() {
+useEffect(() => {
+  // Define o comportamento da barra de navegação
+  const hideNavigationBar = async () => {
+    await NavigationBar.setVisibilityAsync("hidden");
+  };
+  
+  hideNavigationBar();
+}, []);
+  return (
+    <NavigationContainer>
+      <View style={styles.container}>
+        <Tab.Navigator
+          screenOptions={{ headerShown: false, tabBarStyle: { display: "none" } }}
+        >
+          <Tab.Screen name="Home" component={Home} />
+          <Tab.Screen name="Login" component={Login} />
+          <Tab.Screen name="Rotas" component={Rotas} />
+          <Tab.Screen name="Loja" component={Loja} />
+          <Tab.Screen name="Contato" component={Contato} />
+          <Tab.Screen name="Register" component={Cadastro} />
+        </Tab.Navigator>
+
+        {/* Menu fixo visível em todas as telas */}
+        <BottomMenu />
+      </View>
+    </NavigationContainer>
+  );
 }
 
-export default App
-
-//CSS ________________________________________________________________________________________
-const styles= StyleSheet.create({
-  container:{
-    flex:1,
-    backgroundColor:'#2c2c2c',
-    height:"auto",
-    width:"auto"
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
   },
-  containerimg:{
-    height:250,
-  },
-  pad:{
-    marginHorizontal: 15,
-  },
-  slogan: {
-    color: "#f0f0f0",
-    textAlign: "center",
-    fontSize: 16,
-    padding: 25,
-
-  },
-})
-  
+});
